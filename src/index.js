@@ -19,6 +19,7 @@ class Config {
 
     this.hooks = {
       [`${PLUGIN}:debug:debug`]: this.printDebug.bind(this),
+      [`before:package:initialize`]: this.log.bind(this, `Building configuration for stage ${process.env.NODE_CONFIG_ENV}`),
     };
 
     this.commands = {

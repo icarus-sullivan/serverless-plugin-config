@@ -13,3 +13,7 @@ provider:
   runtime: nodejs10.x
   environment:
     DOMAIN: ${self:custom.domain}
+
+functions:
+  hello:
+    handler: src/hello.default
