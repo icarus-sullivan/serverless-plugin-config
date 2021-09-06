@@ -41,11 +41,14 @@ custom:
 Displays the configuration data resolved by the config lib. In the example [here][example], running the command will produce the following:
 ```sh
 $ npx serverless config debug -s beta
-modularize: {
+config: {
   "domain": "api-beta.test.com"
 }
 ```
 # Changelog
+
+**1.0.1**
+- Fixing spelling issues and lifecycle events
 
 **1.0.0**
 - Initial upload 

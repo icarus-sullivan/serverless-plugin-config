@@ -11,3 +11,5 @@ plugins:
 provider:
   name: aws
   runtime: nodejs10.x
+  environment:
+    DOMAIN: ${self:custom.domain}

@@ -28,7 +28,7 @@ class Config {
         commands: {
           debug: {
             usage: 'Display modular file(s) information',
-            lifecycleEvents: ['debug'],
+            lifecycleEvents: ['prepare', 'debug'],
           },
         },
       },
