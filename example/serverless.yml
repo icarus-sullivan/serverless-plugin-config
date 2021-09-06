@@ -1,0 +1,13 @@
+
+service: config-example
+
+plugins:
+  - serverless-plugin-config
+
+# custom:
+#   config:
+#     dir: config
+
+provider:
+  name: aws
+  runtime: nodejs10.x

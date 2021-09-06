@@ -1,0 +1,50 @@
+{
+  "name": "serverless-plugin-config",
+  "version": "1.0.0",
+  "description": "A wrapper around config for serverless projects",
+  "main": "lib/index.js",
+  "files": [
+    "lib/*"
+  ],
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "test": "jest .",
+    "prepare": "npx babel src --out-dir lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/icarus-sullivan/serverless-plugin-config.git"
+  },
+  "keywords": [
+    "serverless",
+    "plugin",
+    "config",
+    "environments",
+    "env"
+  ],
+  "author": "Chris Sullivan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/icarus-sullivan/serverless-plugin-config/issues"
+  },
+  "homepage": "https://github.com/icarus-sullivan/serverless-plugin-config#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.15.4",
+    "@babel/core": "^7.15.5",
+    "@babel/preset-env": "^7.15.4",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^24.9.0",
+    "eslint": "^7.6.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-config-teleology": "1.0.1",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "jest": "^24.9.0",
+    "prettier": "^2.0.5"
+  },
+  "dependencies": {
+    "config": "^3.3.6"
+  }
+}
