@@ -4,15 +4,19 @@ service: config-example
 plugins:
   - serverless-plugin-config
 
-# custom:
-#   config:
-#     dir: config
+custom:
+  config:
+    dir: config
+
+  name: bob
+
+  fullname: '${self:custom.name} Smith'
 
 provider:
   name: aws
   runtime: nodejs10.x
   environment:
-    DOMAIN: ${self:custom.domain}
+    DOMAIN: ${self:config.domain}
 
 functions:
   hello:

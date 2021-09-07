@@ -6,7 +6,7 @@
     "sls": "npx serverless"
   },
   "devDependencies": {
-    "serverless": "^1.60.4",
+    "serverless": "^2.57.0",
     "serverless-plugin-config": "../"
   }
 }
