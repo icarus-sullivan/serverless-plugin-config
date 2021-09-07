@@ -15,9 +15,6 @@ or
 ```sh
 yarn add -D serverless-plugin-config
 ```
-
-# Usage
-
 ## Plugin Dependency
 
 In your projects serverless file, add `serverless-plugin-config` to the list of your plugins:
@@ -25,6 +22,21 @@ In your projects serverless file, add `serverless-plugin-config` to the list of 
 ```yaml
 plugins:
   - serverless-plugin-config
+```
+
+# Usage
+
+You can now reference values from your [config](https://www.npmjs.com/package/config) based settings with the following syntax. 
+
+```
+${self:config.<value>}
+```
+
+Example:
+```
+provider:
+  environment:
+    DOMAIN: ${self:config.domain}
 ```
 
 ## Custom Declaration

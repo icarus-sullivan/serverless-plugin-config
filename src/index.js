@@ -43,9 +43,7 @@ class Config {
   }
 
   async resolveConfig(...args) {
-    console.log('args', ...args);
     const [self_key] = args;
-
     if (self_key.includes('config')) {
       const key = self_key.replace('self:config.', '');
       return this.config.get(key) || null;
