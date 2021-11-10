@@ -16,7 +16,7 @@ provider:
   name: aws
   runtime: nodejs10.x
   environment:
-    DOMAIN: ${self:config.domain}
+    DOMAIN: ${config:domain}
 
 functions:
   hello:

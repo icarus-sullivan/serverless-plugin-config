@@ -1,6 +1,6 @@
 {
   "name": "serverless-plugin-config",
-  "version": "1.0.4",
+  "version": "2.0.0",
   "description": "A wrapper around config for serverless projects",
   "main": "lib/index.js",
   "files": [

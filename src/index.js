@@ -6,23 +6,14 @@ const IDENTIFIER_COLOR = '\x1b[32m';
 const COLOR_RESET = '\x1b[0m';
 const DEFAULT_DIRECTORY = 'config';
 
-const SELF_RESOLVE_IDENTIFIER = 'self';
 class Config {
   constructor(sls, options) {
     this.serverless = sls;
 
     const dir = sls?.custom?.configs?.dir || DEFAULT_DIRECTORY;
-    const currentConfig = this.serverless?.service?.custom || {};
     process.env.NODE_CONFIG_DIR = join(process.cwd(), dir);
     process.env.NODE_CONFIG_ENV = options?.stage || sls?.service?.provider?.stage;
 
-    this.config = require('config');
-    this.serverless.service.custom = Object.assign(currentConfig, this.config);
-
-    const selfResolveIndex = sls.variables.variableResolvers.findIndex((it) => it.regex.toString().includes(SELF_RESOLVE_IDENTIFIER));
-
-    this.defaultSelfResolver = sls.variables.variableResolvers[selfResolveIndex].resolver;
-    this.serverless.variables.variableResolvers[selfResolveIndex].resolver = this.resolveConfig.bind(this);
 
     this.hooks = {
       [`${PLUGIN}:debug:debug`]: this.printDebug.bind(this),
@@ -40,12 +31,26 @@ class Config {
         },
       },
     };
+
+    const config = require('config');
+    this._config = config;
+
+    this.configurationVariablesSources = {
+      config: {
+        async resolve({ address }) {
+          return {
+            //
+            value: config.get(address) || null
+          };
+        },
+      },
+    };
   }
 
   async resolveConfig(...args) {
     const [self_key] = args;
     if (self_key.includes('config')) {
-      const key = self_key.replace('self:config.', '');
+      const key = self_key.replace('config:', '');
       return this.config.get(key) || null;
     }
 
@@ -59,8 +64,7 @@ class Config {
   }
 
   printDebug() {
-    const custom = this.serverless?.service?.custom || {};
-    this.log(JSON.stringify(custom, null, 2));
+    this.log(JSON.stringify(this._config, null, 2));
   }
 }
 

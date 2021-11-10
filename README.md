@@ -29,14 +29,14 @@ plugins:
 You can now reference values from your [config](https://www.npmjs.com/package/config) based settings with the following syntax. 
 
 ```
-${self:config.<value>}
+${config:<value>}
 ```
 
 Example:
 ```
 provider:
   environment:
-    DOMAIN: ${self:config.domain}
+    DOMAIN: ${config:domain}
 ```
 
 ## Custom Declaration
@@ -58,6 +58,9 @@ config: {
 }
 ```
 # Changelog
+
+**2.0.0**
+- Using plugin supported [variable resolution](https://www.serverless.com/framework/docs/guides/plugins/custom-variables)
 
 **1.0.1**
 - Fixing spelling issues and lifecycle events
