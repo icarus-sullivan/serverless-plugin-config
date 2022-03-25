@@ -12,7 +12,7 @@ class Config {
 
     const dir = sls?.custom?.configs?.dir || DEFAULT_DIRECTORY;
     process.env.NODE_CONFIG_DIR = join(process.cwd(), dir);
-    process.env.NODE_CONFIG_ENV = options?.stage || sls?.service?.provider?.stage;
+    process.env.NODE_CONFIG_ENV = options?.s || options?.stage || sls?.service?.provider?.stage;
 
 
     this.hooks = {
